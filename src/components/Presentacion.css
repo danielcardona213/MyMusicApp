@@ -1,0 +1,36 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.Contenedor{
+    margin-top:2% ;
+    margin-bottom: 2%;
+    justify-content: center;
+    display: flex;
+    overflow: hidden;
+
+}
+
+.cont{
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+
+
+.Cards{
+    display: flex;
+    flex-direction: row;
+}
+
+
+@media screen and   (max-width: 320px){
+    .Cards{
+        justify-content: center;
+        display: flex;
+        overflow: hidden;
+  
+    }
+}

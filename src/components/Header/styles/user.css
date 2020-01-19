@@ -1,0 +1,37 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.user {
+    width: 100%;
+    max-height: 100px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+}
+
+.contenUse{
+    width: 100%;
+    height: 100%;
+    max-height: 100px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+}
+
+
+.avatarImg{
+    width: 100%;
+    max-width: 100px;
+    max-height: 100px;
+}
+
+.nombre{
+    display: flex;
+    margin-left: 1%;
+}

@@ -1,0 +1,33 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.card{
+    max-width: 200px;
+    max-height:400px ;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-left: 1%;
+    
+}
+
+
+.contenCard{
+    max-width: 120px;
+    max-height:400px ;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    flex-direction: column;
+    
+}
+
+.imgCard{
+    width: 100%;
+}
