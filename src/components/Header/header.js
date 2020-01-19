@@ -3,6 +3,7 @@ import User from './user';
 import * as $ from "jquery";
 import hash from '../../spotifyApi/token';
 import './styles/header.css'
+import {Link} from 'react-router-dom';
 
 
 export default class Header extends React.Component{
@@ -92,23 +93,27 @@ componentDidMount() {
             <div className ="Header">
                 <div className ="contentHe">
                     <div className ="LogoHe">
-                        <h2>My music</h2>
 
+                      <Link to ="/Home">
+                          <h2>My music</h2>
+                        </Link>
                     </div>
                 <div className ="favoritos">
-                    <nav>
-                        <h6>Favoritos</h6>
-                    </nav>
+                  <Link to="/Favoritos">
+            
+                          <h6>Favoritos</h6>
+                     
+                    </Link>
                 </div>
                 <div className ="userHe">
                     <User 
-                    item = {this.state.item} />
-                    
-
-                    <p>{this.state.item.country}</p>
+                    item = {this.state.item}
+                   />
                 </div>
                 <div className = "salir">
+                  <Link to="/Login">
                         <span>Salir</span>
+                  </Link>
                 </div>
                 </div>
             </div>

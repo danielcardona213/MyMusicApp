@@ -9,28 +9,59 @@
     justify-content: center;
     display: flex;
     overflow: hidden;
+    width: 100%;
 
+}
+
+
+.Titulo{
+   font-size: 5em;
 }
 
 .cont{
     justify-content: center;
     align-items: center;
     display: flex;
+    width: 100%;
     flex-direction: column;
 }
 
 
 .Cards{
     display: flex;
-    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    flex-direction: unset;
+    width: 100%;
 }
+@media screen and (max-width: 234px){
 
-
-@media screen and   (max-width: 320px){
-    .Cards{
-        justify-content: center;
-        display: flex;
-        overflow: hidden;
-  
+    .Titulo{
+        font-size: 4em;
     }
-}
+    }
+
+    @media screen and (max-width: 190px){
+
+        .Titulo{
+            font-size: 3em;
+        }
+        }
+    
+        @media screen and (max-width: 136px){
+
+            .Titulo{
+                font-size: 2em;
+            }
+            }
+            @media screen and (max-width: 90px){
+
+                .Titulo{
+                    font-size: 1em;
+                }
+                }
+            
+            
+        
+        

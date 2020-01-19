@@ -35,3 +35,12 @@
     display: flex;
     margin-left: 1%;
 }
+
+@media screen and (max-width: 300px){
+
+.avatarImg{
+    visibility: hidden;
+}
+}
+
+

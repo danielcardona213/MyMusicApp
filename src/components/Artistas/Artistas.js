@@ -4,6 +4,7 @@ import hash from '../../spotifyApi/token'
 import * as $ from "jquery";
 import Card from '../Cards/Cards';
 
+
 export default class Artistas extends React.Component{
     constructor(){
         super();
@@ -15,7 +16,7 @@ export default class Artistas extends React.Component{
                 "external_urls": {
                   "spotify": ""
                 },
-                "followers": {
+                "followers": {      
                   "href": null,
                   "total": 0
                 },
@@ -76,7 +77,7 @@ export default class Artistas extends React.Component{
           //hacer la llamada usando el token
 
           $.ajax({
-            url: "https://api.spotify.com/v1/me/top/artists?time_range=medium_term&limit=20&offset=5",
+            url: "https://api.spotify.com/v1/me/top/artists?time_range=medium_term&limit=15&offset=5",
             type: "GET",
             beforeSend: (xhr) =>{
 
@@ -110,12 +111,19 @@ export default class Artistas extends React.Component{
 
                     <div className ="Cards">
 
-                        <Card />
-                        <Card />
-                        <Card />
-                        <Card />
-                        <Card />
-                        <Card />
+                    {this.state.item.items.map((card)=>{
+                        return(
+                            <Card
+                            imgArt = {card.images[0].url}
+                            nombre ={card.name}
+                            valor = "Seguidores"
+                            seguidores = {card.followers.total}
+                            />    
+
+                        );
+
+                    })}
+                       
                     </div>
 
                 </div>

@@ -41,25 +41,79 @@ font-size: 1.5em;
 
 .salir{
     width: 20%;
+    
     font-size: 1em;
+}
+
+.salir a{
+    text-decoration: none;
+    color: black;
+    font-size: 2em;
+  
+}
+
+.favoritos a{
+    text-decoration: none;
+    color: black;
+
+}
+
+.LogoHe a{
+    text-decoration: none;
+    color: black;
+  
 }
 
 .LogoHe:hover{
     width: 22%;
     border:  1px solid black;
+    cursor: pointer;
 }
 
 .favoritos:hover{
     width: 22%;
     border:  1px solid black;
+    cursor: pointer;
 }
 
 .userHe:hover{
     width: 42%;
     border:  1px solid black;
+    cursor: pointer;
 }
 
 .salir:hover{
     width: 22%;
     border:  1px solid black;
+    cursor: pointer;
 }
+
+    
+@media screen and (max-width: 200px){
+
+    .contentHe{
+        font-size: 60%;
+    }
+    }
+
+    @media screen and (max-width: 106px){
+
+        .contentHe{
+            font-size: 40%;
+        }
+        }
+
+        @media screen and (max-width: 80px){
+
+            .contentHe{
+                font-size: 20%;
+            }
+            }
+            @media screen and (max-width: 53px){
+
+                .contentHe{
+                    font-size: 1%;
+                }
+                }
+
+               

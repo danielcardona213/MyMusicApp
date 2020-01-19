@@ -5,20 +5,42 @@
 
 .card{
     max-width: 200px;
-    max-height:400px ;
+    max-height:400px;
     overflow: hidden;
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
     margin-left: 1%;
+    margin-top: 1%;
+    border: 1px solid black;
     
 }
 
 
+.play{
+    width: 10%;
+    z-index: 1;
+    display: flex;
+}
+.name{
+    overflow: hidden;
+}
+.name p{
+    width: 100%;
+    max-height: 18px;
+    position: relative;
+}
+
+.follows span{
+    width: 100%;
+    position: relative;
+    
+}
+
 .contenCard{
-    max-width: 120px;
-    max-height:400px ;
+    position: relative;
+    width: 100%;
     overflow: hidden;
     display: flex;
     justify-content: center;
@@ -28,6 +50,90 @@
     
 }
 
+.imgCardCont{
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    
+    overflow: hidden;
+    
+}
+
 .imgCard{
+    position: absolute;
     width: 100%;
+    
+}
+
+
+.play:hover{
+    width: 100px;
+    visibility: visible;
+}
+.imgCard:hover {
+    width: 101%;
+    
+}
+
+.name:hover{
+    max-height: 30px;
+}
+
+.card:hover{
+    font-size: 1.2em;
+    opacity: .8;
+    cursor: pointer;
+    
+}
+
+
+@media screen and (max-width:412px){
+
+    .card{
+        max-width: 120px;
+    }
+    .imgCardCont{
+        width: 120px;
+        height: 67.4px;
+    }
+}
+
+@media screen and (min-width:412px){
+
+    .card{
+        max-width: 200px;
+    }
+    .imgCardCont{
+        width: 200px;
+        height: 112.4px;
+    }
+}
+
+
+@media screen and (min-width:1000px){
+
+    .card{
+        max-width: 300px;
+    }
+
+    .imgCardCont{
+        width: 300px;
+        height: 168.51px;
+    }
+}
+
+
+@media screen and (min-width:1500px){
+
+    .card{
+        max-width: 450px;
+    }
+}
+
+@media screen and (min-width:2500px){
+
+    .card{
+        max-width: 650px;
+    }
 }

@@ -9,14 +9,15 @@ export default class Card extends React.Component{
             <div className ="card">
                 <div className ="contenCard">
                     <div className ="imgCardCont">
-                            <img src ="https://i0.wp.com/www.slang.fm/wp-content/uploads/2019/11/tusa-karol.jpg?fit=1280%2C719&ssl=1" className ="imgCard" />
+                    <img src ="http://prints.ultracoloringpages.com/3f8a34dd2bfac666c1fbf2621c987a3e.png" className ="play"/>
+                            <img src ={this.props.imgArt} className ="imgCard" />
                     </div>
                     <div className ="infoCard">
                         <div className ="name">
-                                <p>Pedro y los escamosos</p>
+                                <p>{this.props.nombre}</p>
                         </div>
                         <div className ="follows">
-                                <span>Seguidores: 20.000</span>
+                                <span>{this.props.valor}: {this.props.seguidores}</span>
                         </div>
                     </div>
 
