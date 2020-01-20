@@ -4,54 +4,71 @@ import hash from '../../spotifyApi/token'
 import * as $ from "jquery";
 import Card from '../Cards/Cards';
 import Header from '../Header/header';
+import {authEndpoint, clientID, redirectURI, scopes } from '../../spotifyApi/config';
+
 
 export default class Artistas extends React.Component{
     constructor(){
         super();
 
         this.state = {
-           item:{
 
-            "artists":{
-            
-              "items": [
-                {
+
+           item:{
+            "href": "",
+            "items": [
+              {
+                "collaborative": false,
+                "description": "",
+                "external_urls": {
+                  "spotify": ""
+                },
+                "href": "",
+                "id": "",
+                "images": [
+                  {
+                    "height": null,
+                    "url": "",
+                    "width": null
+                  }
+                ],
+                "name": "",
+                "owner": {
+                  "display_name": "",
                   "external_urls": {
                     "spotify": ""
                   },
-                  "followers": {
-                    "href": null,
-                    "total": 0
-                  },
-                  "genres": [""],
                   "href": "",
                   "id": "",
-                  "images": [
-                    {
-                        "height": 0,
-                        "url": "",
-                        "width": 0
-                    }
-                    
-                  ],
-                  "name": "",
-                  "popularity": 0,
                   "type": "",
                   "uri": ""
-                }
-              ],// Fin Items
-              "next": null,
-              "total": 0,
-              "cursors": {
-                "after": null
-              },
-              "limit": 0,
-              "href": ""
-            
-          }//Fin del Artist
-        }//in del Item
+                },
+                "primary_color": null,
+                "public": false,
+                "snapshot_id": "",
+                "tracks": {
+                  "href": "",
+                  "total": 0
+                },
+                "type": "",
+                "uri": ""
+              }
+            ],
+            "limit": 0,
+            "next": "",
+            "offset": 0,
+            "previous": "",
+            "total": 0
+          }//Fin del Item
+
+
+
+          
     }
+
 }
+
+
 
     componentDidMount() {
         // Set token
@@ -62,16 +79,22 @@ export default class Artistas extends React.Component{
           this.setState({
             token: _token
           });
-          this.getReconendationsBaseOnSeed(_token);
+          this.getPlayList(_token);
+    
         }
       }
 
 
-      getReconendationsBaseOnSeed(token){
+
+    
+
+    
+
+      getPlayList(token){
           //hacer la llamada usando el token
 
           $.ajax({
-            url: "https://api.spotify.com/v1/me/following?type=artist",
+            url: "https://api.spotify.com/v1/users/22yiwokchvrpbz4nkcai5fhmi/playlists?limit=15&offset=0",
             type: "GET",
             beforeSend: (xhr) =>{
 
@@ -80,11 +103,13 @@ export default class Artistas extends React.Component{
             },
 
             success: (data) => {
-                console.log("Favoritos", data);
+              console.log("Data", data)
+
               this.setState({
                 item: data
               });
 
+     
 
             }
         })
@@ -92,7 +117,22 @@ export default class Artistas extends React.Component{
       }
 
 
+
+      
+
+
+
+      
+
     render(){
+    
+        var toke = hash.access_token;
+        if (toke  == "" || toke == null){
+            window.location = `${authEndpoint}?client_id=${clientID}&redirect_uri=${redirectURI}&scope=${scopes.join(
+                "%20"
+              )}&response_type=token&show_dialog=true`
+        }
+      
         return(
 
           <div className = "home">
@@ -105,13 +145,13 @@ export default class Artistas extends React.Component{
 
 
             <div className ="ContenRecomendados">
-            {this.state.item.artists.items.map((card)=>{
+            {this.state.item.items.map((card)=>{
                         return(
                             <Card
                             imgArt = {card.images[0].url}
-                            nombre ="Hola"
-                            valor = "Seguidores"
-                            seguidores = "Hola"
+                            nombre ={card.name}
+                            valor = "Canciones"
+                            seguidores = {card.tracks.total}
                             />    
 
                         );

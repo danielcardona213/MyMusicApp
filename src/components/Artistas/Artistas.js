@@ -77,7 +77,7 @@ export default class Artistas extends React.Component{
           //hacer la llamada usando el token
 
           $.ajax({
-            url: "https://api.spotify.com/v1/me/top/artists?time_range=medium_term&limit=15&offset=5",
+            url: "https://api.spotify.com/v1/me/top/artists?time_range=medium_term&limit=15&offset=0",
             type: "GET",
             beforeSend: (xhr) =>{
 
@@ -86,7 +86,7 @@ export default class Artistas extends React.Component{
             },
 
             success: (data) => {
-                console.log("top arry", data);
+               
               this.setState({
                 item: data
               });
@@ -113,12 +113,14 @@ export default class Artistas extends React.Component{
 
                     {this.state.item.items.map((card)=>{
                         return(
-                            <Card
-                            imgArt = {card.images[0].url}
-                            nombre ={card.name}
-                            valor = "Seguidores"
-                            seguidores = {card.followers.total}
-                            />    
+                          <Card
+                          imgArt = {card.images[0].url}
+                          nombre ={card.name}
+                          valor = "Seguidores"
+                          seguidores = {card.followers.total}
+                          type={card.type}
+                          Seguir = {card.id}
+                          />    
 
                         );
 

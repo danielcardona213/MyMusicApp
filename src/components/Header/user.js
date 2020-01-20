@@ -9,10 +9,10 @@ class User extends React.Component{
             <div className = "user">
                 <div className ="contenUse">
                     <div className ="avatar">
-                        <img src ={this.props.item.images[0].url} className ="avatarImg"/>
+                        <img src ={this.props.itemHe.images[0].url} className ="avatarImg" alt ="User IMG"/>
                     </div>
                     <div className ="nombre">
-                        <p>{this.props.item.display_name}</p>
+                        <p>{this.props.itemHe.display_name}</p>
                     </div>
 
                 </div>

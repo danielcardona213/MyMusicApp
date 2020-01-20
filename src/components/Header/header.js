@@ -5,14 +5,13 @@ import hash from '../../spotifyApi/token';
 import './styles/header.css'
 import {Link} from 'react-router-dom';
 
-
 export default class Header extends React.Component{
 
 constructor(){
     super();
 
 this.state ={
-    item:{
+    itemHe:{
             "country": "",
             "display_name": "",
             "explicit_content": {
@@ -57,12 +56,12 @@ componentDidMount() {
       this.setState({
         token: _token
       });
-      this.getReconendationsBaseOnSeed(_token);
+      this.getUser(_token);
     }
   }
 
 
-  getReconendationsBaseOnSeed(token){
+  getUser(token){
       //hacer la llamada usando el token
 
       $.ajax({
@@ -75,17 +74,16 @@ componentDidMount() {
           },
 
           success: (data) => {
-              console.log("user", data);
+              
             this.setState({
 
-                item: data
+              itemHe: data
             });
               
             
           }
       })
-      console.log("item user", this.state.item);
-    
+  
   }
 
     render(){
@@ -107,7 +105,7 @@ componentDidMount() {
                 </div>
                 <div className ="userHe">
                     <User 
-                    item = {this.state.item}
+                    itemHe = {this.state.itemHe}
                    />
                 </div>
                 <div className = "salir">
@@ -119,5 +117,11 @@ componentDidMount() {
             </div>
         );
 
-    }
+      }
+
+
+    
 }
+
+
+

@@ -1,5 +1,5 @@
 import React from 'react';
-import {BrowserRouter, Route, Switch, Router} from 'react-router-dom'
+import {BrowserRouter, Route, Switch} from 'react-router-dom'
 import './App.css';
 import Login from './components/Incio';
 import Home from './components/Home';
@@ -7,15 +7,13 @@ import Favoritos from './components/Favoritos/Favoritos';
 
 
 
-const url = "http://localhost:3000/"
-if(window.location === url){
-  window.location = url + "Login"
-}
-
 
 function App() {
 
- 
+  var url = "http://localhost:3000/"
+  if(window.location == url){
+    window.location = url + "Login"
+  }
   return (
     <div className="App">
       
@@ -27,6 +25,7 @@ function App() {
         </Switch>
       </BrowserRouter>
       
+
     </div>
   );
 }

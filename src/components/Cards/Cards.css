@@ -20,8 +20,10 @@
 
 .play{
     width: 10%;
+    font-size: 4em;
     z-index: 1;
     display: flex;
+    
 }
 .name{
     overflow: hidden;
@@ -68,9 +70,26 @@
 
 
 .play:hover{
-    width: 100px;
+    width: 11%;
     visibility: visible;
 }
+
+.play:active{
+    width: 20%;
+    transition: .1s;
+    animation: color 0.1s;
+}
+
+@keyframes color{
+    0%{
+        background-color: transparent;
+    }
+
+    100%{
+        background-color: red;
+    }
+}
+
 .imgCard:hover {
     width: 101%;
     

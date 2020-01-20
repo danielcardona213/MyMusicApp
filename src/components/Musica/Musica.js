@@ -120,7 +120,6 @@ export default class Musica extends React.Component{
             },
 
             success: (data) => {
-                console.log("Canciones", data);
               this.setState({
                 itemM: data
               });
@@ -156,6 +155,8 @@ export default class Musica extends React.Component{
                             nombre ={card.name}
                             valor = "Popularidad"
                             seguidores = {card.popularity}
+                            type = {card.type}
+                            Seguir = {card.id}
                             />    
 
                         );
