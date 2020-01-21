@@ -1,5 +1,7 @@
 // Optener el Token de la Url
 
+
+
 const hash = window.location.hash
 
 .substring(1)

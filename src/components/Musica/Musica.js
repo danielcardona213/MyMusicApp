@@ -134,40 +134,45 @@ export default class Musica extends React.Component{
 
 
     render(){
-
+      try {
         
         return(
-            <div className="Contenedor">
-                <div className = "cont">
+          <div className="Contenedor">
+              <div className = "cont">
 
-                    <div className  ="Titulo">
+                  <div className  ="Titulo">
 
-                    <h4>Musica</h4>
+                  <h4>Musica</h4>
 
-                    </div>
+                  </div>
 
-                    <div className ="Cards">
+                  <div className ="Cards">
 
-                    {this.state.itemM.items.map((card)=>{
-                        return(
-                            <Card
-                            imgArt = {card.album.images[0].url}
-                            nombre ={card.name}
-                            valor = "Popularidad"
-                            seguidores = {card.popularity}
-                            type = {card.type}
-                            Seguir = {card.id}
-                            />    
+                  {this.state.itemM.items.map((card)=>{
+                      return(
+                          <Card
+                          imgArt = {card.album.images[0].url}
+                          nombre ={card.name}
+                          valor = "Popularidad"
+                          seguidores = {card.popularity}
+                          type = {card.type}
+                          Seguir = {card.id}
+                          />    
 
-                        );
+                      );
 
-                    })}
-                       
-                    </div>
+                  })}
+                     
+                  </div>
 
-                </div>
-            </div>
-        );
+              </div>
+          </div>
+      );
+      } catch (error) {
+        console.log("No se carga la Musica");
+        
+      }
+        
     }
 
 }

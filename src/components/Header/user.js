@@ -4,22 +4,29 @@ import './styles/user.css';
 class User extends React.Component{
 
     render(){
-        return(
 
-            <div className = "user">
-                <div className ="contenUse">
-                    <div className ="avatar">
-                        <img src ={this.props.itemHe.images[0].url} className ="avatarImg" alt ="User IMG"/>
-                    </div>
-                    <div className ="nombre">
-                        <p>{this.props.itemHe.display_name}</p>
-                    </div>
+        try {
+            return(
 
+                <div className = "user">
+                    <div className ="contenUse">
+                        <div className ="avatar">
+                            <img src ={this.props.itemHe.images[0].url} className ="avatarImg" alt ="User IMG"/>
+                        </div>
+                        <div className ="nombre">
+                            <p>{this.props.itemHe.display_name}</p>
+                        </div>
+    
+                    </div>
+    
+    
                 </div>
-
-
-            </div>
-        );
+            );
+        } catch (error) {
+            console.log("No se carga los usuarios");
+            
+        }
+        
     }
 }
 

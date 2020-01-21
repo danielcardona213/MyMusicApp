@@ -17,3 +17,7 @@
   background-color: black;
   }
 
+  .footer{
+    position: fixed;
+    bottom: 0;
+}

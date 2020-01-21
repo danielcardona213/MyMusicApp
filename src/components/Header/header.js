@@ -87,36 +87,45 @@ componentDidMount() {
   }
 
     render(){
+
+      try {
+
         return(
-            <div className ="Header">
-                <div className ="contentHe">
-                    <div className ="LogoHe">
+          <div className ="Header">
+              <div className ="contentHe">
+                  <div className ="LogoHe">
 
-                      <Link to ="/Home">
-                          <h2>My music</h2>
-                        </Link>
-                    </div>
-                <div className ="favoritos">
-                  <Link to="/Favoritos">
-            
-                          <h6>Favoritos</h6>
-                     
-                    </Link>
-                </div>
-                <div className ="userHe">
-                    <User 
-                    itemHe = {this.state.itemHe}
-                   />
-                </div>
-                <div className = "salir">
-                  <Link to="/Login">
-                        <span>Salir</span>
+                    <Link to ="/Home">
+                        <h2>My music</h2>
+                      </Link>
+                  </div>
+              <div className ="favoritos">
+                <Link to="/Favoritos">
+          
+                        <h6>Favoritos</h6>
+                   
                   </Link>
-                </div>
-                </div>
-            </div>
-        );
+              </div>
+              <div className ="userHe">
+                  <User 
+                  itemHe = {this.state.itemHe}
+                 />
+              </div>
+              <div className = "salir">
+                <Link to="/Login">
+                      <span>Salir</span>
+                </Link>
+              </div>
+              </div>
+          </div>
+      );
 
+        
+      } catch (error) {
+        console.log("No se carga el header");
+        
+      }
+        
       }
 
 

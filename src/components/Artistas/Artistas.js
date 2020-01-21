@@ -99,6 +99,9 @@ export default class Artistas extends React.Component{
 
 
     render(){
+
+      try {
+        
         return(
             <div className="Contenedor">
                 <div className = "cont">
@@ -131,6 +134,11 @@ export default class Artistas extends React.Component{
                 </div>
             </div>
         );
+
+      } catch (error) {
+        console.log("No se cargan los artistas");
+        
+      }
     }
 
 }

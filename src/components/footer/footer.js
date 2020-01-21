@@ -1,21 +1,21 @@
 import React from 'react';
 import * as $ from "jquery";
 import hash from '../../spotifyApi/token';
-
+import './footer.css';
 
 export default class Footer extends React.Component{
-    
+
 constructor(){
     super();
 
-this.state ={
+this.state={
     itemPlay:{
         "timestamp": 0,
         "device": {
           "id": "",
           "is_active": false,
           "is_restricted": false,
-          "name": "",
+          "name": "CARNAVAl",
           "type": "",
           "volume_percent": 0
         },
@@ -27,11 +27,12 @@ this.state ={
             "resuming": true
           }
         },
+
         "item": {
             "album": {
                 "album_type": "SINGLE",
                 "artists": [
-                  {
+                   {
                     "external_urls": {
                       "spotify": ""
                     },
@@ -105,9 +106,8 @@ this.state ={
           "uri" : ""
         }
       }
-    
-}
 
+}
 
 
 }
@@ -126,42 +126,84 @@ componentDidMount() {
       this.getUser(_token);
     }
   }
-
-
   getUser(token){
       //hacer la llamada usando el token
-
       $.ajax({
           url: "https://api.spotify.com/v1/me/player",
           type: "GET",
           beforeSend: (xhr) =>{
-
             xhr.setRequestHeader("Authorization", "Bearer " + token);
-
           },
-            
           success: (data) => {
-            console.log(data);
-              
             this.setState({
-
                 itemPlay: data
             });
-              
-            
           }
       })
       console.log("item user", this.state.itemPlay);
-    
+
   }
+  
 
 render(){
+
+  if (this.state.itemPlay){
     return(
         <div className ="footer">
+
+          
             <div className ="contenFooter">
-                <h1>{this.state.itemPlay.item.album.name}</h1>
+              <div className ="imgSong">
+                <img src ={this.state.itemPlay.item.album.images[0].url} alt ="Album img" className="imgAlb" />
+              </div>
+              <div className="names">
+                <p className="songName">{this.state.itemPlay.item.name} - Del album- {this.state.itemPlay.item.album.name}</p>
+                <p className ="artistName">{this.state.itemPlay.item.artists.map((nombre) =>{
+                    return( 
+                      <p>{nombre.name}. </p>
+                    );
+                })
+                  }</p>
+                </div>
+                <div className ="progresbar">
+                  <div className="bar">
+                    <div className ="progres">
+
+                    </div>
+
+                  </div>
+
+                </div>
             </div>
         </div>
     );
+
+  }else{
+    
+      try {
+
+        return(
+        <div className ="footer">
+          <div className ="contenFooter">
+            <div className ="imgSong">
+              <img src ="https://www.stickpng.com/assets/images/580b57fcd9996e24bc43c4f9.png" alt ="Album img" className="imgAlb" />
+            </div>
+            <div className="names">
+              <p className="songName">Vacio - Del album- Vacio</p>
+              <p className ="artistName">Vacio</p>
+              </div>
+              <div className ="progresbar">
+                <div className="bar">
+                  <div className ="progres">
+                  </div>
+                </div>
+              </div>
+          </div>
+      </div>  
+      );
+      } catch (error) {
+        console.log("vacio")
+      }
+ }
 }
 }

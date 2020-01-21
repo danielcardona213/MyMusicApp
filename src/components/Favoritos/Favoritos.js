@@ -125,7 +125,8 @@ export default class Artistas extends React.Component{
       
 
     render(){
-    
+    try {
+      
         var toke = hash.access_token;
         if (toke  == "" || toke == null){
             window.location = `${authEndpoint}?client_id=${clientID}&redirect_uri=${redirectURI}&scope=${scopes.join(
@@ -168,6 +169,12 @@ export default class Artistas extends React.Component{
                        
                     
         );
+
+        
+    } catch (error) {
+      console.log("No se carga los fav");
+      
+    }
     }
 
 }
