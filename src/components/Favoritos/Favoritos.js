@@ -1,76 +1,50 @@
 import React from 'react';
 import '../Presentacion.css';
+import '../../components/Home.css';
 import hash from '../../spotifyApi/token'
 import * as $ from "jquery";
 import Card from '../Cards/Cards';
 import Header from '../Header/header';
+import Footer from '../footer/footer';
 import {authEndpoint, clientID, redirectURI, scopes } from '../../spotifyApi/config';
 
 
 export default class Artistas extends React.Component{
     constructor(){
         super();
-
         this.state = {
-
-
            item:{
-            "href": "",
-            "items": [
-              {
-                "collaborative": false,
-                "description": "",
-                "external_urls": {
-                  "spotify": ""
-                },
-                "href": "",
-                "id": "",
-                "images": [
-                  {
-                    "height": null,
-                    "url": "",
-                    "width": null
-                  }
-                ],
-                "name": "",
-                "owner": {
-                  "display_name": "",
+            "artists": {
+              "items": [{
                   "external_urls": {
                     "spotify": ""
                   },
+                  "followers": {
+                    "href": null,
+                    "total": 0
+                  },
+                  "genres": [""],
                   "href": "",
                   "id": "",
-                  "type": "",
-                  "uri": ""
-                },
-                "primary_color": null,
-                "public": false,
-                "snapshot_id": "",
-                "tracks": {
-                  "href": "",
-                  "total": 0
-                },
-                "type": "",
-                "uri": ""
-              }
-            ],
-            "limit": 0,
-            "next": "",
-            "offset": 0,
-            "previous": "",
-            "total": 0
-          }//Fin del Item
-
-
-
-          
+                  "images": [{
+                      "height": 0,
+                      "url": "",
+                      "width": 0
+                    }],
+              "name": "",
+              "next": "",
+              "total": 0,
+              "cursors": {
+                "after": ""
+              },
+              "limit": 0,
+              "href": ""
+            }]
+          }
+        }
+      }
     }
-
-}
-
-
-
-    componentDidMount() {
+   componentDidMount() {
         // Set token
         let _token = hash.access_token;
 
@@ -84,17 +58,11 @@ export default class Artistas extends React.Component{
         }
       }
 
-
-
-    
-
-    
-
       getPlayList(token){
           //hacer la llamada usando el token
 
           $.ajax({
-            url: "https://api.spotify.com/v1/users/22yiwokchvrpbz4nkcai5fhmi/playlists?limit=15&offset=0",
+            url: "https://api.spotify.com/v1/me/following?type=artist&limit=50",
             type: "GET",
             beforeSend: (xhr) =>{
 
@@ -116,14 +84,6 @@ export default class Artistas extends React.Component{
 
       }
 
-
-
-      
-
-
-
-      
-
     render(){
     try {
       
@@ -133,28 +93,37 @@ export default class Artistas extends React.Component{
                 "%20"
               )}&response_type=token&show_dialog=true`
         }
-      
+
         return(
 
           <div className = "home">
           <div className ="content">
 
-              
+          <footer className="footer" id ="pie">
+                    <Footer />
+                </footer>   
+
               <div className = "headerHome">
                   <Header />
               </div>
 
 
-            <div className ="ContenRecomendados">
-            {this.state.item.items.map((card)=>{
+            <div className ="ContenRecomendadosArtis">
+            {this.state.item.artists.items.map((card, div)=>{
                         return(
-                            <Card
-                            imgArt = {card.images[0].url}
-                            nombre ={card.name}
-                            valor = "Canciones"
-                            seguidores = {card.tracks.total}
-                            />    
-
+                          <div key={div.toString()}>
+                          <li  key={card.toString()}>
+                              <Card 
+                             imgArt = {card.images[0].url}
+                             nombre ={card.name}
+                             valor = "Seguidores"
+                             typeAction = {false}
+                             seguidores = {card.followers.total}
+                             type = {card.type}
+                             Seguir ={card.id}
+                             />    
+                           </li>
+                         </div>
                         );
 
                     })}

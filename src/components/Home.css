@@ -13,3 +13,11 @@
     flex-wrap: wrap;
 }
 
+.ContenRecomendadosArtis{
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 100px;
+}

@@ -140,12 +140,11 @@ componentDidMount() {
             });
           }
       })
-      console.log("item user", this.state.itemPlay);
-
   }
   
 
 render(){
+
 
   if (this.state.itemPlay){
     return(
@@ -158,12 +157,12 @@ render(){
               </div>
               <div className="names">
                 <p className="songName">{this.state.itemPlay.item.name} - Del album- {this.state.itemPlay.item.album.name}</p>
-                <p className ="artistName">{this.state.itemPlay.item.artists.map((nombre) =>{
+                <div className ="artistName">{this.state.itemPlay.item.artists.map((nombre) =>{
                     return( 
-                      <p>{nombre.name}. </p>
+                      <p  key={nombre.name.toString()}>{nombre.name}. - </p>
                     );
                 })
-                  }</p>
+                  }</div>
                 </div>
                 <div className ="progresbar">
                   <div className="bar">

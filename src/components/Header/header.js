@@ -112,7 +112,7 @@ componentDidMount() {
                  />
               </div>
               <div className = "salir">
-                <Link to="/Login">
+                <Link to="/">
                       <span>Salir</span>
                 </Link>
               </div>

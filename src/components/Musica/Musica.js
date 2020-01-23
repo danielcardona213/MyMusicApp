@@ -90,7 +90,7 @@ export default class Musica extends React.Component{
 
 
             }//Fin del item
-        }//in del state
+        }//Fin del state
     //Fin del constructor
 
     componentDidMount() {
@@ -148,17 +148,25 @@ export default class Musica extends React.Component{
 
                   <div className ="Cards">
 
-                  {this.state.itemM.items.map((card)=>{
+                  {this.state.itemM.items.map((card, div)=>{
                       return(
-                          <Card
-                          imgArt = {card.album.images[0].url}
-                          nombre ={card.name}
-                          valor = "Popularidad"
-                          seguidores = {card.popularity}
-                          type = {card.type}
-                          Seguir = {card.id}
-                          />    
+                        <div key={div.toString()}>
+                         <li  key={card.toString()}>
+                             <Card 
+                            imgArt = {card.album.images[0].url}
+                            nombre ={card.name}
+                            artistsName  ={card.album.artists[0].name}  
+                            informationType = {true}
 
+
+                            valor = "Popularidad"
+                            sintaxis = "Has enviado a favoritos la canción: "
+                            typeAction = {true}
+                            seguidores = {card.popularity}
+                            Seguir = "null"
+                            />    
+                          </li>
+                        </div>
                       );
 
                   })}

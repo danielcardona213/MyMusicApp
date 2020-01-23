@@ -112,18 +112,27 @@ export default class Artistas extends React.Component{
 
                     </div>
 
-                    <div className ="Cards">
+                    <div className ="Cards" >
 
-                    {this.state.item.items.map((card)=>{
+                    {this.state.item.items.map((card, div)=>{
                         return(
+
+
+                          <div key={div.toString()}>
+                            <li key={card.toString()}>
                           <Card
                           imgArt = {card.images[0].url}
                           nombre ={card.name}
+                          informationType = {false}
+
                           valor = "Seguidores"
                           seguidores = {card.followers.total}
-                          type={card.type}
+                          sintaxis = "Has seguido al artista"
+                          typeAction = {true}
                           Seguir = {card.id}
-                          />    
+                          />   
+                          </li>
+                          </div> 
 
                         );
 
