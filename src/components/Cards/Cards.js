@@ -7,20 +7,22 @@ export default class Card extends React.Component{
     
 
     
-    constructor(){
-        super();
+constructor(){
+  
+  super();
 
-        this.state = {
-           "token": null,
+    this.state = {
+      "token": null,
+
+  }
 
 
-            }
-            
-        }
-    //Fin del constructor
+    }            
+
+//Fin del constructor
 
     
-    componentDidMount() {
+componentDidMount() {
         // Set token
         let _token = hash.access_token;
        
@@ -30,10 +32,9 @@ export default class Card extends React.Component{
             token: _token
           });
         }
-      }
+}
       //Seguir a un artista o cancion 
-
-getseguir = e =>{
+getseguir = e =>{  
     
     const swalWithBootstrapButtons = Swal.mixin({
         customClass: {
@@ -42,8 +43,6 @@ getseguir = e =>{
         },
         buttonsStyling: false
       })
-
-
     if (this.props.typeAction){
 
             e.preventDefault();
@@ -59,20 +58,29 @@ getseguir = e =>{
                     xhr.setRequestHeader("Authorization", "Bearer " + this.state.token);
                   },   
               })
-  
-              Swal.fire(
-                this.props.sintaxis,
-                this.props.nombre,
-                'success'
-              )
               
-          }
-        
-    }else{
+              if(this.props.color){
+                console.log("dada");
+                
+                Swal.fire(
+                  "Ya sigues a este artista",
+                  this.props.nombre,
+                  'success'
+                )
+              }else{
+                Swal.fire(
+                  this.props.sintaxis,
+                  this.props.nombre,
+                  'success'
+                )
+              }
+              
 
+          
+          }
+           
+    }else{
             e.preventDefault();
-    
-    
             //pedir la confirmación
             swalWithBootstrapButtons.fire({
                 title: 'Estas seguro',
@@ -116,7 +124,6 @@ getseguir = e =>{
     }
 }
 
-
 getInfomatioAboutArtist = e =>{
     e.preventDefault();
 
@@ -135,10 +142,19 @@ getInfomatioAboutArtist = e =>{
     }
     
 }
-//Dejas de seguir a un artista o cancion
-    render(){
-        try {
 
+//Dejas de seguir a un artista o cancion
+render(){
+  try {
+
+    var cora =  "https://www.stickpng.com/assets/images/58afdad0829958a978a4a692.png"
+
+    if(this.props.corazonRoto){
+      cora= "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bb/Broken_heart.svg/1200px-Broken_heart.svg.png"
+    }else if(this.props.color){
+      cora = "https://i.ya-webdesign.com/images/corazon-png.png"
+    }
+    
             return(
 
                 <div className ="card">
@@ -155,7 +171,10 @@ getInfomatioAboutArtist = e =>{
                             </div>
                             <div className ="follows">
                                 <span>{this.props.valor}: {this.props.seguidores}</span>
-                                <a onClick={this.getseguir} className ="contentCora"><img src ="https://www.stickpng.com/assets/images/58afdad0829958a978a4a692.png"  className ="corazon"/></a>
+                                <a onClick={this.getseguir} className ="contentCora"><img 
+                                
+  
+                                src ={cora} className ="corazon"/></a>
                             </div>
                         </div>
     
@@ -164,9 +183,8 @@ getInfomatioAboutArtist = e =>{
                 </div>
             );
             
-        } catch (error) {
-            console.log("No se carga los cards");
-            
-        }   
-    }
+  } catch (error) {
+      console.log("No se carga los cards");
+    }   
+  }
 }

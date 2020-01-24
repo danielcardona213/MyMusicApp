@@ -43,8 +43,9 @@ export default class Artistas extends React.Component{
                 "name": "",
                 "popularity": 0,
                 "type": "",
-                "uri": ""
-              }
+                "uri": "",
+                "colorCora": false
+              },
             ],
             "total": 0,
             "limit": 0,
@@ -52,9 +53,37 @@ export default class Artistas extends React.Component{
             "href": "",
             "previous": null,
             "next": ""
-          }//fin del item
+          },//fin del item
 
-
+          favoritos:{
+            "artists": {
+              "items": [{
+                  "external_urls": {
+                    "spotify": ""
+                  },
+                  "followers": {
+                    "href": null,
+                    "total": 0
+                  },
+                  "genres": [""],
+                  "href": "",
+                  "id": "",
+                  "images": [{
+                      "height": 0,
+                      "url": "",
+                      "width": 0
+                    }],
+              "name": "",
+              "next": "",
+              "total": 0,
+              "cursors": {
+                "after": ""
+              },
+              "limit": 0,
+              "href": ""
+            }]
+          }
+        }
             }//Fin del item
         }//in del state
     //Fin del constructor
@@ -69,6 +98,7 @@ export default class Artistas extends React.Component{
             token: _token
           });
           this.getReconendationsBaseOnSeed(_token);
+          this.getFavArtits(_token);
         }
       }
 
@@ -98,6 +128,31 @@ export default class Artistas extends React.Component{
       }
 
 
+      getFavArtits(token){
+        //hacer la llamada usando el token
+      
+        $.ajax({
+          url: "https://api.spotify.com/v1/me/following?type=artist&limit=50",
+          type: "GET",
+          beforeSend: (xhr) =>{
+      
+            xhr.setRequestHeader("Authorization", "Bearer " + token);
+      
+          },
+      
+          success: (data) => {
+            console.log("Favoritos", data)
+      
+            this.setState({
+              favoritos: data
+            });
+          }
+      })
+      
+      }
+      
+
+
     render(){
 
       try {
@@ -115,6 +170,12 @@ export default class Artistas extends React.Component{
                     <div className ="Cards" >
 
                     {this.state.item.items.map((card, div)=>{
+                        for (let i = 0; i < this.state.favoritos.artists.items.length; i++) {
+              
+                            if(this.state.favoritos.artists.items[i].id == card.id){
+                              card.colorCora = true;
+                            }
+                        }                   
                         return(
 
 
@@ -124,12 +185,13 @@ export default class Artistas extends React.Component{
                           imgArt = {card.images[0].url}
                           nombre ={card.name}
                           informationType = {false}
-
                           valor = "Seguidores"
                           seguidores = {card.followers.total}
                           sintaxis = "Has seguido al artista"
                           typeAction = {true}
                           Seguir = {card.id}
+                          corazonRoto = {false}
+                          color = {card.colorCora}
                           />   
                           </li>
                           </div> 

@@ -106,7 +106,7 @@
 @media screen and (max-width: 230px){
     .footer{
         font-size: 80%;
-        height: 60%;
+        height: 30%;
     }
 }
 
@@ -130,6 +130,11 @@
     .footer{
         font-size: 95%;
         height: 60%;
+        
+    }
+
+    .imgSong{
+        width: 30%;
     }
 }
 
@@ -138,19 +143,28 @@
         font-size: 90%;
         height: 50%;
     }
+    .imgSong{
+        width: 25%;
+    }
 }
 
 @media screen and (max-height: 230px){
     .footer{
         font-size: 80%;
-        height: 60%;
+        height: 30%;
+    }
+    .imgSong{
+        width: 20%;
     }
 }
 
 @media screen and (max-height: 170px){
     .footer{
         font-size: 75%;
-        height: 30%;
+        height: 20%;
+    }
+    .imgSong{
+        width: 15%;
     }
 }
 
@@ -159,6 +173,9 @@
     .footer{
         font-size: 75%;
         height: 10%;
+    }
+    .imgSong{
+        width: 10%;
     }
 }
 

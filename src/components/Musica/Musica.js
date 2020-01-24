@@ -157,13 +157,13 @@ export default class Musica extends React.Component{
                             nombre ={card.name}
                             artistsName  ={card.album.artists[0].name}  
                             informationType = {true}
-
-
                             valor = "Popularidad"
                             sintaxis = "Has enviado a favoritos la canción: "
                             typeAction = {true}
                             seguidores = {card.popularity}
                             Seguir = "null"
+                            corazonRoto = {false}
+
                             />    
                           </li>
                         </div>

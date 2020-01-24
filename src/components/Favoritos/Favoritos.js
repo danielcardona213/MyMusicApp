@@ -12,7 +12,8 @@ import {authEndpoint, clientID, redirectURI, scopes } from '../../spotifyApi/con
 export default class Artistas extends React.Component{
     constructor(){
         super();
-        this.state = {
+     
+      this.state = {
            item:{
             "artists": {
               "items": [{
@@ -53,12 +54,12 @@ export default class Artistas extends React.Component{
           this.setState({
             token: _token
           });
-          this.getPlayList(_token);
+          this.getFavArtits(_token);
     
         }
       }
 
-      getPlayList(token){
+      getFavArtits(token){
           //hacer la llamada usando el token
 
           $.ajax({
@@ -107,13 +108,13 @@ export default class Artistas extends React.Component{
                   <Header />
               </div>
 
-
             <div className ="ContenRecomendadosArtis">
             {this.state.item.artists.items.map((card, div)=>{
-                        return(
+                       
+                       return(
                           <div key={div.toString()}>
                           <li  key={card.toString()}>
-                              <Card 
+                            <Card 
                              imgArt = {card.images[0].url}
                              nombre ={card.name}
                              valor = "Seguidores"
@@ -121,12 +122,15 @@ export default class Artistas extends React.Component{
                              seguidores = {card.followers.total}
                              type = {card.type}
                              Seguir ={card.id}
+                             corazonRoto = {true}
                              />    
                            </li>
                          </div>
                         );
 
                     })}
+
+
             </div>
               
 
